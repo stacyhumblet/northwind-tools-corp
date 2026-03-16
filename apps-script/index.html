@@ -42,6 +42,9 @@
             autocomplete="off"
           />
         </div>
+        <button id="themeBtn" class="icon-btn" title="Toggle dark/light mode" onclick="toggleTheme()">
+          <span class="material-symbols-outlined">dark_mode</span>
+        </button>
         <button id="refreshBtn" class="icon-btn" title="Refresh data">
           <span class="material-symbols-outlined">refresh</span>
         </button>
@@ -103,6 +106,27 @@
     <div class="card-preview-label"></div>
   </div>
 
+  <script>
+    // ── Theme ──────────────────────────────────────────────
+    (function initTheme() {
+      const saved = localStorage.getItem('nw_corp_theme') || 'light';
+      applyTheme(saved);
+    })();
+    function applyTheme(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      const btn = document.getElementById('themeBtn');
+      if (btn) {
+        btn.querySelector('.material-symbols-outlined').textContent =
+          t === 'dark' ? 'light_mode' : 'dark_mode';
+        btn.title = t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+      }
+      localStorage.setItem('nw_corp_theme', t);
+    }
+    function toggleTheme() {
+      const cur = document.documentElement.getAttribute('data-theme') || 'light';
+      applyTheme(cur === 'dark' ? 'light' : 'dark');
+    }
+  </script>
   <script>
     const PRELOADED_APPS = <?!= appsDataJson; ?>;
     const INIT_ERROR     = <?!= JSON.stringify(initError); ?>;

@@ -23,6 +23,38 @@
 }
 
 /* ─────────────────────────────────────────
+   Dark mode overrides
+───────────────────────────────────────── */
+[data-theme="dark"] {
+  --color-bg:          #0d1f3c;
+  --color-surface:     rgba(255,255,255,.06);
+  --color-surface-2:   rgba(255,255,255,.10);
+  --color-border:      rgba(26,110,148,.30);
+  --color-primary:     #4fa8cc;
+  --color-primary-dim: rgba(79,168,204,.15);
+  --color-text:        #e8edf8;
+  --color-text-muted:  rgba(232,237,248,.50);
+  --color-success:     #1fe3a5;
+  --color-error:       #ff6b6b;
+  --shadow-card: 0 4px 24px rgba(0,0,0,.30);
+}
+[data-theme="dark"] .site-header {
+  background: rgba(13,31,60,.90);
+}
+[data-theme="dark"] .section-nav {
+  background: rgba(13,31,60,.88);
+}
+[data-theme="dark"] .site-footer {
+  background: rgba(13,31,60,.80);
+}
+[data-theme="dark"] body {
+  background:
+    radial-gradient(1200px 700px at 20% 0%,  rgba(26,110,148,.18), transparent 60%),
+    radial-gradient(900px  600px at 80% 10%, rgba(79,168,204,.10), transparent 60%),
+    var(--color-bg);
+}
+
+/* ─────────────────────────────────────────
    Reset & base
 ───────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
